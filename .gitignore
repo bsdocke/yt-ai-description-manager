@@ -2,6 +2,7 @@ dist
 build
 .idea
 .venv
+__pycache__
 *.json
 *.spec
 *.iml
