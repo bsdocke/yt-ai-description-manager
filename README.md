@@ -3,7 +3,10 @@ This project is a simple GUI application that allows you to generate YouTube des
 
 ## Usage
 The simplest way to get started (for Windows users) is to download one of the executable builds.
+
 In the directory where you keep the .exe, create a client_secrets.json file and a settings.json file.
+
+Once you start the program with your appropriate OAuth credentials, you will likely be prompted to use your browser to allow it permissions to upload on behalf of your account and YouTube channel. Choose values as appropriate.
 
 ## client_secrets.json
 This is where you'll need to store your credentials that allow you to upload videos to YouTube.
@@ -21,7 +24,13 @@ Should be in the following format
 
 ```
 
-TODO - add instructions for how to create or get these values from Google Console
+You can acquire an OAuth 2.0 client ID and client secret from the Google API Console at https://console.cloud.google.com/.
+ 
+Please ensure that you have enabled the YouTube Data API for your project.
+
+For more information about using OAuth2 to access the YouTube Data API, see: https://developers.google.com/youtube/v3/guides/authentication
+
+For more information about the client_secrets.json file format, see: https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
 
 ## settings.json
 These are more like preferences, but do include your Gemini API key that you'll need for Description generation.
@@ -34,7 +43,25 @@ The only required value is google_ai_api_key, the rest can be populated from Set
     "google_ai_api_key": "YourGeminiAPIKeyHere"
 }
 ```
-TODO - add where to get this key
+
+You can find this key at https://aistudio.google.com/app/api-keys once you've logged in. If you don't have one, you will need to create one
 
 ## Running from source
-TODO explain getting started with venv, what version of Python you'll need, etc... Not very different from what you'd need for running the executable
+Make sure you have Python3 installed on your machine and available on the PATH
+
+After cloning the repo, navigate to the root in a terminal
+
+Run
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Create and populate your settings.json and client_secrets.json in the same directory as described above.
+
+Then run
+
+```
+python3 main.py
+```
