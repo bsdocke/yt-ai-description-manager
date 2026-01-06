@@ -1,0 +1,4 @@
+google-generativeai
+google-api-python-client
+httplib2~=0.31.0
+oauth2client~=4.1.3
