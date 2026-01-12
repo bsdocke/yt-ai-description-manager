@@ -152,10 +152,13 @@ def start_yt_upload(directory, on_complete):
 
             if upload_successful:
                 print("Upload successful. Moving files...")
-                dest_video_path = os.path.join(uploaded_dir, filename)
-                os.rename(video_path, dest_video_path)
+                try:
+                    dest_video_path = os.path.join(uploaded_dir, filename)
+                    os.rename(video_path, dest_video_path)
 
-                if os.path.exists(description_path):
-                    dest_description_path = os.path.join(uploaded_dir, description_filename)
-                    os.rename(description_path, dest_description_path)
+                    if os.path.exists(description_path):
+                        dest_description_path = os.path.join(uploaded_dir, description_filename)
+                        os.rename(description_path, dest_description_path)
+                except IOError as e:
+                    print("An IO error occurred. Upload succeeded but file movement failed. Continuing: %s" % e)
     on_complete()
